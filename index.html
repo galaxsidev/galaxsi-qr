@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>QR Code Generator</title>
+    </head>
+    <script>
+        const uriRegex = `https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)`
+
+        const generateQR = () => {
+            const link = document.getElementById('link')
+            validateLink(link.value);
+        }
+
+        function validateLink(link) {
+            let message = '';
+
+            if(link.match(uriRegex)) {
+                message = 'Please enter a valid url!';
+            }
+
+            if(message != '') {
+                alert(message, "Error");
+            }
+        }
+    </script>
+    <body>
+        <h1>Create a QR Code!</h1>
+        <p>Create a quick QR Code to use for your busniess/social media/etc.</p>
+        <form>
+            <label>Link</label>
+            <input id="link" type="text"/>
+            <a onclick="generateQR()">Generate</a>
+            <hr />
+            <div id="qr-code">
+
+            </div>
+        </form>
+    </body>
+</html>
